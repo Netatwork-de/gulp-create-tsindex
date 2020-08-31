@@ -28,7 +28,8 @@ module.exports = function(file, opt) {
 	const outputFilePath = path.dirname(fileName);
 
 	function bufferContents(file, enc, cb) {
-			
+		this.push(file);
+
 		if (file.isNull()) {
 			cb();
 			return;
@@ -61,7 +62,6 @@ module.exports = function(file, opt) {
 			tsIndex.push(`export * from "./${filePath}";`)
 		}
 
-		this.push(file);
 		cb();
 	}
 
